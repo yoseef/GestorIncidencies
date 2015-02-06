@@ -1,0 +1,30 @@
+[{
+        "Id": 0,
+        "Nom": "Finca 1",
+        "Descripcio": "Finca numero 1",
+        "Data":"2015-04-02T09:48:09.585Z",
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 1,
+        "Nom": "Finca 2",
+        "Descripcio": "Finca numero 2",
+        "Data":"2015-04-03T09:48:09.585Z",
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    }, {
+        "Id": 2,
+        "Nom": "Finca 3",
+        "Descripcio": "Finca numero 3",
+        "Data":"2015-04-04T09:48:09.585Z",
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    }
+]

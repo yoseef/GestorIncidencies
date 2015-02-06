@@ -1,0 +1,68 @@
+[
+    {
+        "Id": 0,
+        "Id_Finca": 0,
+        "Observ": "Visita 1",
+        "Data": "2015-04-02T09:48:09.585Z",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 1,
+        "Id_Finca": 1,
+        "Data":"2015-04-02T09:48:09.585Z",
+        "Observ": "Visita 2",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 2,
+        "Id_Finca": 1,
+        "Observ": "Visita 3",
+        "Data":"2015-04-03T09:48:09.585Z",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 3,
+        "Id_Finca": 2,
+        "Observ": "Visita 4",
+        "Data":"2015-04-03T09:48:09.585Z",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 4,
+        "Id_Finca": 2,
+        "Observ": "Visita 5",
+        "Data":"2015-04-05T09:48:09.585Z",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    },
+    {
+        "Id": 5,
+        "Id_Finca": 2,
+        "Observ": "Visita 6",
+        "Data":"2015-04-05T09:48:09.585Z",
+        "Fotos": [],
+        "Coor": {
+            "lat": 0,
+            "long": 0
+        }
+    }
+]
