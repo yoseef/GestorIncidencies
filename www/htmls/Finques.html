@@ -1,0 +1,180 @@
+<ons-navigator animation="slide" var="app.navi">
+    <ons-page>
+        <ons-toolbar>
+            <div class="right">                        
+                <ons-toolbar-button ng-click="novaFinca();">
+                    <ons-icon icon="ion-plus-round" size="28px" fixed-width="false"></ons-icon>
+                </ons-toolbar-button>   
+            </div>
+            <div class="left">
+                <ons-toolbar-button ng-click="menu.toggle()">
+                    <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">FINQUES</div>
+        </ons-toolbar>
+
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <ul class="list list--inset">
+                    <li ng-repeat="fin in finques track by fin.Id" ng-click="setSelectedFinca(fin);
+                                app.navi.pushPage('DetallFinca.html');"  class="list__item list--inset__item list__item--chevron">
+                        {{fin.Nom}}
+                    <ons-button  style="float: right; right: 20px;" modifier="quiet" ng-click="editarFinca(fin);
+                                $event.stopPropagation();">
+                        <ons-icon icon="ion-edit" size="20px" fixed-width="false"></ons-icon>
+                    </ons-button>
+                    </li>
+                </ul>                        
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-navigator>
+
+
+<ons-template id="NovaFinca.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Cancelar</ons-back-button></div>
+            <div class="center" >Nova Finca</div>
+        </ons-toolbar>
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <div >
+                    <form novalidate class="simple-form" >
+                        <input class="text-input" type="text" placeholder="Nom" ng-model="finca.Nom"/>
+                        <br><br>
+                        <textarea  class="textarea" placeholder="Descripcio" ng-model="finca.Descripcio"></textarea>
+                        <br><br>
+                        <input class="text-input" type="date" ng-model="finca.Data" placeholder="yyyy-MM-dd"/>
+                        <br><br>
+                        <!--<ons-button modifier="outline" ng-click="app.navi.pushPage('ferFoto.html');">Capturar Imatge</ons-button>
+                        <br><br>-->
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('localitzacio.html');">Localitzacio</ons-button>
+                        <br><br>
+                        <ons-button ng-click="guardarFinca()">Guardar</ons-button>
+                        <br><br>
+                    </form>
+                </div>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-template>
+
+<ons-template id="EditarFinca.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left"><ons-back-button ng-click="finca = modificarFinca();">Guardar</ons-back-button></div>
+            <div class="center" >Editar {{selectedFinca.Nom}}</div>
+        </ons-toolbar>
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <div >
+                    <form novalidate class="simple-form" >
+                        <input class="text-input" type="text" placeholder="Nom" ng-model="selectedFinca.Nom"/>
+                        <br><br>
+                        <textarea  class="textarea" placeholder="Descripcio" ng-model="selectedFinca.Descripcio"></textarea>
+                        <br><br>
+                        <input class="text-input" type="date" ng-model="selectedFinca.Data"/>
+                        <br><br>                            
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('localitzacio.html');">Cambiar localitzacio</ons-button>
+                        <br><br>
+                        <!--<ons-button ng-click="finca = modificarFinca();">Guardar</ons-button>-->
+                        <br><br>
+                        <hr>                
+                    </form>
+                </div>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-template>
+
+<ons-template id="DetallFinca.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Back</ons-back-button></div>                
+            <div class="center" >{{selectedFinca.Nom}}</div>
+            <div class="right">
+                <ons-toolbar-button ng-click="novaVisita()">
+                    <ons-icon icon="ion-plus-round" size="28px" fixed-width="false"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <ul class="list list--inset">
+                    <li class="animate-repeat list__item list--inset__item list__item--chevron"  ng-repeat="visita in visites| filter:filtre as results track by visita.Id"  ng-click="setSelectedVisit(visita); app.navi.pushPage('DetallVisita.html');">
+                        {{visita.Data| date:"dd/MM/yyyy"}}
+                        -
+                        {{visita.Observ}}
+                    </li>
+                    <li class="animate-repeat list__item list--inset__item list__item--chevron" ng-if="results.length === 0">
+                        <strong>No visites found...</strong>
+                    </li>
+                </ul>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-template>
+
+<ons-template id="NovaVisita.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left"><ons-back-button>Cancelar</ons-back-button></div>
+            <div class="center" >Crear Visita</div>
+        </ons-toolbar>
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <div >
+                    <form novalidate class="simple-form" >
+                        <input class="text-input" type="date"  ng-model="visita.Data"/>
+                        <br><br>                        
+                        <textarea  class="textarea" placeholder="Descripcio"  ng-model="visita.Observ"></textarea>
+                        <br><br>
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('ferFoto.html');">Capturar Imatge</ons-button>
+                        <br><br>
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('localitzacio.html');">Localitzacio</ons-button>
+                        <br><br>
+                        <ons-button ng-click="guardarVisita()">Guardar</ons-button>
+                        <br><br>
+                        <hr>                
+                    </form>
+                </div>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-template>
+
+<ons-template id="DetallVisita.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-back-button>Back</ons-back-button>                            
+            </div> 
+            <div class="center" >{{selectedFinca.Nom}} / {{selectedVisita.Observ}}</div>              
+        </ons-toolbar>
+        <ons-row style="margin-top: 50px;">
+            <ons-col align="center">
+                <div >
+                    <form novalidate class="simple-form" >
+                        <input class="text-input" type="date"  ng-model="selectedFinca.Data"/>
+                        <br><br>                        
+                        <textarea  class="textarea" placeholder="Descripcio"  ng-model="selectedFinca.Observ"></textarea>
+                        <br><br>
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('ferFoto.html');">Capturar Imatge</ons-button>
+                        <br><br>
+                        <ons-button modifier="outline" ng-click="app.navi.pushPage('localitzacio.html');">Localitzacio</ons-button>
+                        <br><br>
+                        <ons-button ng-click="guardarVisita()">Guardar</ons-button>
+                        <br><br>
+                        <hr>                
+                    </form>
+                </div>
+            </ons-col>
+        </ons-row>
+    </ons-page>
+</ons-template>
+
+
+
+
